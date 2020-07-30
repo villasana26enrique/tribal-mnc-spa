@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { SearchService } from '../../services/search.service';
 })
 export class HomeComponent implements OnInit {
 
-  public itunes: any[] = [];
+  public itunes:  any[] = [];
   public tvMaze:  any[] = [];
   public crcind:  any[] = [];
   public loading: boolean = false;
@@ -31,6 +32,13 @@ export class HomeComponent implements OnInit {
                         this.crcind = data.crcind;
                         this.tvMaze = data.tvMaze;
                         this.loading = false;
+                      }, ( reject ) => {
+                        this.loading = false;
+                        Swal.fire({
+                          title: 'Error',
+                          text: 'No se ha obtenido respuesta del Servidor.',
+                          icon: 'error',
+                        });
                       });
   }
 
