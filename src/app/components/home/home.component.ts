@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   public itunes: any[] = [];
   public tvMaze:  any[] = [];
   public crcind:  any[] = [];
+  public loading: boolean = false;
 
   constructor(private searchService: SearchService) { }
 
@@ -18,15 +19,18 @@ export class HomeComponent implements OnInit {
   }
 
   getSearch( searchTerm: string ) {
+    this.loading = false;
     if ( searchTerm === '') { return; }
     this.itunes = [];
     this.crcind  = [];
     this.tvMaze  = [];
-    this.searchService.getSearch$( searchTerm )
+    this.loading = true;
+    this.searchService.getSearch$( searchTerm.trim() )
                       .subscribe((data: any) => {
                         this.itunes = data.itunes;
                         this.crcind = data.crcind;
                         this.tvMaze = data.tvMaze;
+                        this.loading = false;
                       });
   }
 

@@ -1,50 +1,30 @@
 <div class="row">
-    <div class="col">
+    <div class="col-10">
         <input (keyup.enter)="getSearch( search.value )" type="text" class="form-control" placeholder="Artista, Canción, Tv Show, Personas..." #search>
     </div>
+    <div class="col-2">
+        <button class="btn btn-outline-primary btn-block" type="button" (click)="getSearch( search.value )">Buscar</button>
+    </div>
 </div>
-<div *ngIf="itunes.length > 0" class="row mt-2">
+<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="itunes.length > 0" class="row mt-2 animated fadeIn">
     <div class="col">
         <h2>Itunes</h2>
         <hr>
-        <div class="card-columns">
-            <div *ngFor="let itune of itunes" class="card">
-                <img class="card-img-top" src="assets/img/itunes.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ itune.artistName }}</h5>
-                    <p class="card-text">{{ itune.kind }}</p>
-                </div>
-            </div>
-        </div>
+        <app-cards [itunes]="itunes"></app-cards>
     </div>
 </div>
-<div *ngIf="tvMaze.length > 0" class="row mt-2">
+<div *ngIf="tvMaze.length > 0" class="row mt-2 animated fadeIn">
     <div class="col">
         <h2>TvMaze</h2>
         <hr>
-        <div class="card-columns">
-            <div *ngFor="let show of tvMaze" class="card">
-                <img class="card-img-top" src="assets/img/tzmaze.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title"><pre>{{ show.name }}</pre></h5>
-                    <p class="card-text">{{ show.premiered }}</p>
-                </div>
-            </div>
-        </div>
+        <app-cards [tvMaze]="tvMaze"></app-cards>
     </div>
 </div>
-<div *ngIf="crcind.length > 0" class="row mt-2">
+<div *ngIf="crcind.length > 0" class="row mt-2 animated fadeIn">
     <div class="col">
         <h2>CrCind</h2>
         <hr>
-        <div class="card-columns">
-            <div *ngFor="let person of crcind" class="card">
-                <img class="card-img-top" src="assets/img/person.png" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">{{ person.name }}</h5>
-                    <p class="card-text">{{ person.dob }}</p>
-                </div>
-            </div>
-        </div>
+        <app-cards [crcind]="crcind"></app-cards>
     </div>
 </div>

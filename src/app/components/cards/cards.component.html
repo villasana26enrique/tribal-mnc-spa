@@ -1,1 +1,28 @@
-<p>cards works!</p>
+<div *ngIf="itunes" class="card-columns">
+    <div *ngFor="let itune of itunes" class="card">
+        <img class="card-img-top" src="assets/img/itunes.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ itune.trackName }}</h5>
+            <p class="card-text">{{ itune.artistName }}</p>
+            <p class="card-text">{{ itune.kind }}</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="tvMaze" class="card-columns">
+    <div *ngFor="let show of tvMaze" class="card">
+        <img class="card-img-top" src="assets/img/tzmaze.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title"><pre>{{ show.name }}</pre></h5>
+            <p class="card-text">{{ show.premiered }}</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="crcind" class="card-columns">
+    <div *ngFor="let person of crcind" class="card">
+        <img class="card-img-top" src="assets/img/person.png" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{ person.name }}</h5>
+            <p class="card-text">{{ person.dob }}</p>
+        </div>
+    </div>
+</div>
