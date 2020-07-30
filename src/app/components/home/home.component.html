@@ -1,5 +1,5 @@
 <div class="row">
     <div class="col">
-        <input type="text" class="form-control" placeholder="Artista, Canción, Tv Show, Personas..." #busqueda>
+        <input (keyup.enter)="getSearch( search.value )" type="text" class="form-control" placeholder="Artista, Canción, Tv Show, Personas..." #search>
     </div>
 </div>
