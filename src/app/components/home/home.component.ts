@@ -8,15 +8,26 @@ import { SearchService } from '../../services/search.service';
 })
 export class HomeComponent implements OnInit {
 
+  public itunes: any[] = [];
+  public tvMaze:  any[] = [];
+  public crcind:  any[] = [];
+
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
   }
 
   getSearch( searchTerm: string ) {
-    console.log(searchTerm);
+    if ( searchTerm === '') { return; }
+    this.itunes = [];
+    this.crcind  = [];
+    this.tvMaze  = [];
     this.searchService.getSearch$( searchTerm )
-                      .subscribe( (data: any) => console.log(data) );
+                      .subscribe((data: any) => {
+                        this.itunes = data.itunes;
+                        this.crcind = data.crcind;
+                        this.tvMaze = data.tvMaze;
+                      });
   }
 
 }

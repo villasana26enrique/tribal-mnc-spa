@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ export class SearchService {
 
   constructor(public http: HttpClient) { }
 
-  getSearch$( term: string ) {
+  getSearch$( term: string ): Observable<any> {
     const data = {
       term
     };
-    return this.http.post( this.url, data );
+    return this.http.post<any>( this.url, data );
   }
 
 }

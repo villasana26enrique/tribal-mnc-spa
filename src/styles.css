@@ -2,4 +2,9 @@
 
 body {
     background-color: azure;
+    margin-bottom: 30px;
+}
+
+.card-columns {
+    column-count: 4;
 }
